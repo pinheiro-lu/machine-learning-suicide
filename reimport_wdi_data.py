@@ -5,6 +5,7 @@ import time
 import logging
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import re  # for normalization
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -21,23 +22,23 @@ except FileNotFoundError:
 # Load and process metadata
 try:
     metadata_df = pd.read_csv('datasets/wdi_metadata.csv', encoding='latin1', on_bad_lines='skip')
-    metadata_df = metadata_df.dropna(subset=['Series Code'])
-    metadata_df['Normalized Series Name'] = metadata_df['Series Name'].str.strip().str.lower()
-
-    metadata_mapping = dict(zip(metadata_df['Series Name'], metadata_df['Series Code']))
-    normalized_mapping = dict(zip(metadata_df['Normalized Series Name'], metadata_df['Series Code']))
-
-    desired_series_codes = [metadata_mapping[name] for name in filtered_series_names if name in metadata_mapping]
-    unmatched_entries = [name for name in filtered_series_names if name not in metadata_mapping]
-
-    normalized_unmatched = [name.strip().lower() for name in unmatched_entries]
-    normalized_codes = [normalized_mapping[name] for name in normalized_unmatched if name in normalized_mapping]
-    desired_series_codes.extend(normalized_codes)
-
-    final_unmatched = [name for name in normalized_unmatched if name not in normalized_mapping]
+    metadata_df = metadata_df.dropna(subset=['Code'])
+    # Normalize Indicator Name: lowercase, strip, remove punctuation
+    metadata_df['Name Norm'] = (
+        metadata_df['Indicator Name'].astype(str)
+        .str.strip().str.lower()
+        .apply(lambda x: re.sub(r"[^\w\s]", "", x))
+    )
+    # Build normalized mapping
+    norm_mapping = dict(zip(metadata_df['Name Norm'], metadata_df['Code']))
+    # Normalize filtered names
+    filtered_norm = [re.sub(r"[^\w\s]", "", name.strip().lower()) for name in filtered_series_names]
+    # Map normalized names to codes
+    desired_series_codes = [norm_mapping[n] for n in filtered_norm if n in norm_mapping]
+    # Determine unmatched
+    final_unmatched = [orig for orig, n in zip(filtered_series_names, filtered_norm) if n not in norm_mapping]
     if final_unmatched:
-        print(f"Final unmatched entries: {final_unmatched}")
-
+        print(f"Final unmatched entries after normalization: {final_unmatched}")
     desired_series_codes = list(set(desired_series_codes))
     print(f"Mapped {len(desired_series_codes)} series names to codes.")
 except FileNotFoundError:
@@ -156,5 +157,30 @@ try:
         logging.info("Download successful! All data saved to CSV.")
     else:
         logging.warning("No data downloaded.")
+
+    # Force fetching data for specific countries by bypassing processed indicators
+    additional_countries = ['CIV', 'PRK']
+    logging.info(f"Forcing data fetch for countries: {additional_countries}")
+
+    # Fetch data for the additional countries only, ignoring processed indicators
+    combined_data = fetch_data_with_session(valid_series_codes, additional_countries, date_range, temp_file)
+
+    if combined_data:
+        df_wdi = pd.DataFrame(combined_data)
+        # Parse country field into separate columns
+        df_wdi['country_id'] = df_wdi['country'].apply(lambda x: x.get('id') if isinstance(x, dict) else None)
+        df_wdi['country_name'] = df_wdi['country'].apply(lambda x: x.get('value') if isinstance(x, dict) else None)
+        df_wdi.drop(columns=['country'], inplace=True)
+        # Remove unnecessary columns
+        df_wdi.drop(columns=['unit', 'obs_status', 'decimal'], inplace=True)
+        # Drop rows with missing values
+        df_wdi = df_wdi.dropna(subset=['value'])
+        # Append new data to existing CSV without overwriting
+        existing_data = pd.read_csv('datasets/wdi_data.csv')
+        updated_data = pd.concat([existing_data, df_wdi], ignore_index=True)
+        updated_data.to_csv('datasets/wdi_data.csv', index=False)
+        logging.info("Updated CSV with new data for forced countries.")
+    else:
+        logging.warning("No additional data downloaded for forced countries.")
 except Exception as e:
     logging.error(f"Error during data download: {e}")

@@ -1,0 +1,2 @@
+I have 191 series after removing the specified ones.
+Tried to remove 423 series.

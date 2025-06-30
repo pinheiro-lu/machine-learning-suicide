@@ -1,0 +1,86 @@
+Set 1 (size 2):
+  HD.HCI.OVRL.LB (Human capital index (HCI), lower bound (scale 0-1))
+  HD.HCI.OVRL.UB (Human capital index (HCI), upper bound (scale 0-1))
+  Least |correlation| in set: 0.9975
+
+Set 2 (size 2):
+  NE.CON.TOTL.ZS (Final consumption expenditure (% of GDP))
+  NY.GDS.TOTL.ZS (Gross domestic savings (% of GDP))
+  Least |correlation| in set: 1.0000
+
+Set 3 (size 2):
+  NY.GDP.MKTP.KD.ZG (GDP growth (annual %))
+  NY.GDP.PCAP.KD.ZG (GDP per capita growth (annual %))
+  Least |correlation| in set: 0.9534
+
+Set 4 (size 2):
+  PV.EST (Political Stability and Absence of Violence/Terrorism: Estimate)
+  PV.PER.RNK (Political Stability and Absence of Violence/Terrorism: Percentile Rank)
+  Least |correlation| in set: 0.9721
+
+Set 5 (size 2):
+  RL.EST (Rule of Law: Estimate)
+  RL.PER.RNK (Rule of Law: Percentile Rank)
+  Least |correlation| in set: 0.9909
+
+Set 6 (size 2):
+  SE.ADT.LITR.MA.ZS (Literacy rate, adult male (% of males ages 15 and above))
+  SE.ADT.LITR.ZS (Literacy rate, adult total (% of people ages 15 and above))
+  Least |correlation| in set: 0.9854
+
+Set 7 (size 2):
+  SE.PRM.NINT.FE.ZS (Net intake rate in grade 1, female (% of official school-age population))
+  SE.PRM.NINT.MA.ZS (Net intake rate in grade 1, male (% of official school-age population))
+  Least |correlation| in set: 0.9848
+
+Set 8 (size 2):
+  SH.XPD.CHEX.PP.CD (Current health expenditure per capita, PPP (current international $))
+  SH.XPD.GHED.PP.CD (Domestic general government health expenditure per capita, PPP (current international $))
+  Least |correlation| in set: 0.9650
+
+Set 9 (size 2):
+  SH.XPD.OOPC.CH.ZS (Out-of-pocket expenditure (% of current health expenditure))
+  SH.XPD.PVTD.CH.ZS (Domestic private health expenditure (% of current health expenditure))
+  Least |correlation| in set: 0.9175
+
+Set 10 (size 5):
+  SI.DST.02ND.20 (Income share held by second 20%)
+  SI.DST.03RD.20 (Income share held by third 20%)
+  SI.DST.05TH.20 (Income share held by highest 20%)
+  SI.DST.10TH.10 (Income share held by highest 10%)
+  SI.DST.FRST.20 (Income share held by lowest 20%)
+  Least |correlation| in set: 0.8434
+
+Set 11 (size 2):
+  SL.AGR.EMPL.ZS (Employment in agriculture (% of total employment) (modeled ILO estimate))
+  SL.SRV.EMPL.ZS (Employment in services (% of total employment) (modeled ILO estimate))
+  Least |correlation| in set: 0.9476
+
+Set 12 (size 5):
+  SP.DYN.TFRT.IN (Fertility rate, total (births per woman))
+  SP.POP.0014.TO.ZS (Population ages 0-14 (% of total population))
+  SP.POP.1564.TO.ZS (Population ages 15-64 (% of total population))
+  SP.POP.DPND (Age dependency ratio (% of working-age population))
+  SP.POP.DPND.YG (Age dependency ratio, young (% of working-age population))
+  Least |correlation| in set: 0.8879
+
+Set 13 (size 2):
+  SP.POP.65UP.TO.ZS (Population ages 65 and above (% of total population))
+  SP.POP.DPND.OL (Age dependency ratio, old (% of working-age population))
+  Least |correlation| in set: 0.9960
+
+Set 14 (size 2):
+  SP.POP.TOTL.FE.ZS (Population, female (% of total population))
+  SP.POP.TOTL.MA.ZS (Population, male (% of total population))
+  Least |correlation| in set: 1.0000
+
+Set 15 (size 2):
+  SP.RUR.TOTL.ZS (Rural population (% of total population))
+  SP.URB.TOTL.IN.ZS (Urban population (% of total population))
+  Least |correlation| in set: 1.0000
+
+Set 16 (size 2):
+  VA.EST (Voice and Accountability: Estimate)
+  VA.PER.RNK (Voice and Accountability: Percentile Rank)
+  Least |correlation| in set: 0.9944
+

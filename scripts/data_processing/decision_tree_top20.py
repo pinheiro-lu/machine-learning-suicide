@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 from sklearn.model_selection import cross_val_score, KFold
 from sklearn.tree import DecisionTreeRegressor
@@ -6,23 +7,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.tree import plot_tree
 from src.feature_selection import build_code_to_name
+import json
+import os
 
-# Load your processed, filled data
-df = pd.read_csv('data/processed/merged_data_independent_filled.csv')
+# Use the reduced dataset with top 20 features
+csv_path = 'data/processed/merged_data_top20_decisiontree.csv'
+df = pd.read_csv(csv_path)
 
-# Set your target column
 target_col = 'SuicideRatesPer100k'
-# List of key columns to drop from features
 key_columns = ['iso3', 'Year']
 
-# Drop target and key columns from features
 X = df.drop(columns=[target_col] + [col for col in key_columns if col in df.columns])
 y = df[target_col]
 
 # Load code-to-name mapping
 code_to_name = build_code_to_name('data/raw/wdi_metadata.csv')
 
-# Set up k-fold cross-validation (e.g., 5 folds)
+# Set up k-fold cross-validation
 k = 5
 kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
@@ -45,22 +46,38 @@ importances = pd.Series(model.feature_importances_, index=X.columns)
 importances_named = importances.rename(lambda code: code_to_name.get(code, code))
 importances_sorted = importances_named.sort_values(ascending=False)
 accumulated = importances_sorted.cumsum()
-N_TOP_FEATURES = 20  # Number of top features to print and analyze
+N_TOP_FEATURES = 20
 print(f"\nFeature importances (top {N_TOP_FEATURES}):")
 for name, imp, acc in zip(importances_sorted.index[:N_TOP_FEATURES], importances_sorted.values[:N_TOP_FEATURES], accumulated.values[:N_TOP_FEATURES]):
     print(f"{name:50s} Importance: {imp:.4f}  Accumulated: {acc:.4f}")
 
-# Save feature importances to file (with names)
-importances_named.sort_values(ascending=False).to_csv('data/interim/decision_tree_feature_importances.csv', header=['importance'])
+# Results directory
+results_dir = 'results/decision_tree_top20'
+os.makedirs(results_dir, exist_ok=True)
 
-# Optional: visualize the tree (for small trees)
-plt.figure(figsize=(30, 16))  # Larger figure for readability
+# Save metrics and settings
+metrics = {
+    "k_fold": k,
+    "mean_mse": float(np.mean(mse_scores)),
+    "std_mse": float(np.std(mse_scores)),
+    "mean_r2": float(np.mean(r2_scores)),
+    "std_r2": float(np.std(r2_scores)),
+}
+with open(os.path.join(results_dir, "metrics.json"), "w") as f:
+    json.dump(metrics, f, indent=2)
+
+# Save feature importances
+importances_sorted.to_csv(os.path.join(results_dir, "feature_importances.csv"), header=['importance'])
+
+# Save tree plot
+plt.figure(figsize=(30, 16))
 plot_tree(
     model,
     feature_names=[code_to_name.get(col, col) for col in X.columns],
     filled=True,
-    max_depth=2,
-    fontsize=10  # Smaller font size for clarity
+    max_depth=3,
+    fontsize=10
 )
-plt.title("Decision Tree (first 2 levels)")
-plt.show()
+plt.title("Decision Tree (first 3 levels) - Top 20 Features")
+plt.savefig(os.path.join(results_dir, "tree_plot.png"))
+plt.close()

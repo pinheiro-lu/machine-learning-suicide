@@ -1,0 +1,6 @@
+feature,importance,prop_positive_splits,prop_negative_splits,prop_positive_samples,prop_negative_samples
+"Labor force, female (% of total labor force)",0.29564676984703214,0.479,0.521,0.691,0.309
+Population density (people per sq. km of land area),0.2836541333811058,0.432,0.568,0.381,0.619
+Employment in industry (% of total employment) (modeled ILO estimate),0.16899326474754167,0.494,0.506,0.662,0.338
+Access to electricity (% of population),0.1366356586405218,0.393,0.607,0.234,0.766
+"Domestic private health expenditure per capita, PPP (current international $)",0.1150701733837987,0.441,0.559,0.348,0.652

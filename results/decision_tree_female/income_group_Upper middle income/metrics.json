@@ -1,9 +1,0 @@
-{
-  "k_fold": 5,
-  "mean_mse": 1.3529748628081002,
-  "std_mse": 0.36870893320445375,
-  "mean_r2": 0.8173190029026098,
-  "std_r2": 0.034789587624113064,
-  "income_group": "Upper middle income",
-  "n_samples": 1087
-}

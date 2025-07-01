@@ -1,0 +1,75 @@
+feature,importance,prop_positive_splits,prop_negative_splits,prop_positive_samples,prop_negative_samples
+"Labor force, female (% of total labor force)",0.143015340449224,0.482,0.518,0.923,0.077
+"Population, female (% of total population)",0.12573745118559093,0.463,0.537,0.767,0.233
+Population density (people per sq. km of land area),0.1097493713999308,0.4,0.6,0.053,0.947
+"Compulsory education, duration (years)",0.07706658055699457,0.385,0.615,0.519,0.481
+Employment in industry (% of total employment) (modeled ILO estimate),0.05800012536885299,0.469,0.531,0.904,0.096
+Out-of-pocket expenditure (% of current health expenditure),0.05047690511890818,0.491,0.509,0.071,0.929
+GDP (current US$),0.04702861426805555,0.396,0.604,0.07,0.93
+Urban population (% of total population),0.04631728857487518,0.4,0.6,0.155,0.845
+"Labor force, total",0.03771918359560314,0.321,0.679,0.171,0.829
+"External health expenditure per capita, PPP (current international $)",0.03383413660640161,0.468,0.532,0.696,0.304
+Compensation of employees (% of expense),0.03305995808449217,0.509,0.491,0.212,0.788
+"Manufacturing, value added (% of GDP)",0.028082406550592885,0.617,0.383,0.935,0.065
+Access to electricity (% of population),0.020388536609875926,0.511,0.489,0.075,0.925
+Employment in agriculture (% of total employment) (modeled ILO estimate),0.015658056360614073,0.554,0.446,0.728,0.272
+"Armed forces personnel, total",0.013340291599715755,0.378,0.622,0.092,0.908
+Population ages 15-64 (% of total population),0.011552980984906432,0.478,0.522,0.547,0.453
+Armed forces personnel (% of total labor force),0.01032443841777811,0.571,0.429,0.266,0.734
+"Government expenditure on education, total (% of GDP)",0.009241998992169561,0.591,0.409,0.84,0.16
+Fixed telephone subscriptions (per 100 people),0.009144413212567634,0.516,0.484,0.305,0.695
+Public and publicly guaranteed debt service (% of GNI),0.008339993824250831,0.595,0.405,0.238,0.762
+"Services, value added (% of GDP)",0.008144847248374746,0.4,0.6,0.203,0.797
+Individuals using the Internet (% of population),0.007392458733435151,0.263,0.737,0.097,0.903
+Goods and services expense (% of expense),0.006992992155343257,0.35,0.65,0.226,0.774
+"Agriculture, forestry, and fishing, value added (% of GDP)",0.005837055771473138,0.408,0.592,0.291,0.709
+"Agriculture, forestry, and fishing, value added (current US$)",0.005812550061594249,0.391,0.609,0.314,0.686
+"School enrollment, tertiary (% gross)",0.0054110922150867845,0.273,0.727,0.106,0.894
+"Employment to population ratio, 15+, total (%) (national estimate)",0.004531939155275894,0.42,0.58,0.128,0.872
+"Unemployment, total (% of total labor force) (national estimate)",0.004287668074857467,0.571,0.429,0.395,0.605
+Population growth (annual %),0.004109265613459524,0.542,0.458,0.785,0.215
+"Employment to population ratio, 15+, total (%) (modeled ILO estimate)",0.004078353158021725,0.478,0.522,0.447,0.553
+Voice and Accountability: Estimate,0.0035221532936744807,0.477,0.523,0.459,0.541
+"Industry (including construction), value added (% of GDP)",0.003314338681218096,0.528,0.472,0.532,0.468
+Domestic general government health expenditure (% of general government expenditure),0.003268897308064224,0.377,0.623,0.527,0.473
+"Personal remittances, received (current US$)",0.0031303946420339116,0.309,0.691,0.098,0.902
+"Personal remittances, received (% of GDP)",0.0030842088107809243,0.47,0.53,0.64,0.36
+General government final consumption expenditure (% of GDP),0.002649116384306291,0.515,0.485,0.333,0.667
+Population ages 0-14 (% of total population),0.0026000337188354502,0.448,0.552,0.438,0.562
+Expense (% of GDP),0.002577040032838072,0.522,0.478,0.63,0.37
+"Domestic private health expenditure per capita, PPP (current international $)",0.0023922862080024087,0.493,0.507,0.608,0.392
+Population ages 65 and above (% of total population),0.0023054421466101966,0.473,0.527,0.439,0.561
+"Net bilateral aid flows from DAC donors, Total (current US$)",0.0021184717698789993,0.465,0.535,0.695,0.305
+Final consumption expenditure (% of GDP),0.0020119771127104936,0.429,0.571,0.206,0.794
+Gross savings (% of GNI),0.001857933728839167,0.279,0.721,0.358,0.642
+Rule of Law: Estimate,0.0018357191262683144,0.474,0.526,0.64,0.36
+Domestic general government health expenditure (% of GDP),0.0017845215309937575,0.594,0.406,0.639,0.361
+"School enrollment, secondary (% gross)",0.0015865342310813248,0.561,0.439,0.753,0.247
+"Out-of-pocket expenditure per capita, PPP (current international $)",0.0013959255914501806,0.408,0.592,0.269,0.731
+Gross savings (% of GDP),0.0011389983685167306,0.654,0.346,0.74,0.26
+Domestic general government health expenditure (% of current health expenditure),0.0011182165574858387,0.507,0.493,0.383,0.617
+GDP per capita (current US$),0.0010901983305218713,0.458,0.542,0.492,0.508
+External health expenditure (% of current health expenditure),0.0009621844606914193,0.538,0.462,0.484,0.516
+"Government expenditure on education, total (% of government expenditure)",0.0008633754382610543,0.547,0.453,0.621,0.379
+"School enrollment, primary (% gross)",0.0008389406837514496,0.517,0.483,0.55,0.45
+Domestic credit to private sector (% of GDP),0.0008384588882001064,0.473,0.527,0.521,0.479
+"Gross intake ratio in first grade of primary education, total (% of relevant age group)",0.0008228974371821372,0.415,0.585,0.473,0.527
+Gross capital formation (% of GDP),0.0007095773646502725,0.411,0.589,0.342,0.658
+GDP per capita growth (annual %),0.0007054411604193325,0.446,0.554,0.462,0.538
+Current health expenditure (% of GDP),0.000694150193636311,0.419,0.581,0.376,0.624
+Proportion of seats held by women in national parliaments (%),0.0006546128345368013,0.412,0.588,0.327,0.673
+Fixed broadband subscriptions (per 100 people),0.0006027003206234356,0.358,0.642,0.229,0.771
+"Inflation, consumer prices (annual %)",0.0005990215007066562,0.515,0.485,0.428,0.572
+"GDP per capita, PPP (current international $)",0.0005798863344734114,0.333,0.667,0.291,0.709
+"Net intake rate in grade 1, female (% of official school-age population)",0.0005509900240140454,0.452,0.548,0.362,0.638
+Political Stability and Absence of Violence/Terrorism: Estimate,0.00030159919559788137,0.475,0.525,0.452,0.548
+"Current health expenditure per capita, PPP (current international $)",0.0002962067092041731,0.5,0.5,0.428,0.572
+GNI growth (annual %),0.00019096267162991724,0.559,0.441,0.547,0.453
+Income share held by highest 10%,0.00012184034479241501,0.633,0.367,0.719,0.281
+Income share held by lowest 20%,9.192038329011644e-05,0.407,0.593,0.476,0.524
+Adjusted net national income per capita (annual % growth),6.504160012906924e-05,0.391,0.609,0.269,0.731
+CPIA macroeconomic management rating (1=low to 6=high),2.3755793315880983e-05,0.667,0.333,0.706,0.294
+"Human capital index (HCI), upper bound (scale 0-1)",1.6882681062058172e-05,0.273,0.727,0.227,0.773
+"Literacy rate, adult male (% of males ages 15 and above)",1.0844128288983422e-05,0.385,0.615,0.364,0.636
+CPIA fiscal policy rating (1=low to 6=high),8.329110109978822e-09,0.667,0.333,0.714,0.286
+"Annualized average growth rate in per capita real survey mean consumption or income, bottom 40% of population (%)",0.0,0.0,0.0,0.0,0.0

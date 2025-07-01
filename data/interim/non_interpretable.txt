@@ -1,1 +1,69 @@
 "Population, female (% of total population)"
+Out-of-pocket expenditure (% of current health expenditure)
+"External health expenditure per capita, PPP (current international $)"
+Compensation of employees (% of expense)
+Public and publicly guaranteed debt service (% of GNI)
+Population ages 65 and above (% of total population)
+"Armed forces personnel, total"
+Voice and Accountability: Estimate
+Domestic credit to private sector (% of GDP)
+GDP (current US$)
+"Out-of-pocket expenditure per capita, PPP (current international $)"
+General government final consumption expenditure (% of GDP)
+Rule of Law: Estimate
+"Personal remittances, received (% of GDP)"
+Armed forces personnel (% of total labor force)
+Political Stability and Absence of Violence/Terrorism: Estimate
+External health expenditure (% of current health expenditure)
+Employment in agriculture (% of total employment) (modeled ILO estimate)
+Current health expenditure (% of GDP)
+"Labor force, total"
+"Current health expenditure per capita, PPP (current international $)"
+"Personal remittances, received (current US$)"
+Final consumption expenditure (% of GDP)
+Domestic general government health expenditure (% of GDP)
+Population growth (annual %)
+Fixed telephone subscriptions (per 100 people)
+Adjusted net national income per capita (annual % growth)
+Income share held by lowest 20%
+Domestic general government health expenditure (% of current health expenditure)
+"Net bilateral aid flows from DAC donors, Total (current US$)"
+"Services, value added (% of GDP)"
+Domestic general government health expenditure (% of general government expenditure)
+"Employment to population ratio, 15+, total (%) (modeled ILO estimate)"
+Individuals using the Internet (% of population)
+GDP per capita growth (annual %)
+"Employment to population ratio, 15+, total (%) (national estimate)"
+"Unemployment, total (% of total labor force) (national estimate)"
+Gross savings (% of GDP)
+"Government expenditure on education, total (% of government expenditure)"
+Gross capital formation (% of GDP)
+Expense (% of GDP)
+"School enrollment, secondary (% gross)"
+"Gross intake ratio in first grade of primary education, total (% of relevant age group)"
+Income share held by highest 10%
+"GDP per capita, PPP (current international $)"
+Gross savings (% of GNI)
+"Industry (including construction), value added (% of GDP)"
+GDP per capita (current US$)
+Goods and services expense (% of expense)
+GNI growth (annual %)
+Fixed broadband subscriptions (per 100 people)
+"Inflation, consumer prices (annual %)"
+"Net intake rate in grade 1, female (% of official school-age population)"
+"Literacy rate, adult male (% of males ages 15 and above)"
+"Human capital index (HCI), upper bound (scale 0-1)"
+CPIA fiscal policy rating (1=low to 6=high)
+CPIA macroeconomic management rating (1=low to 6=high)
+"Annualized average growth rate in per capita real survey mean consumption or income, bottom 40% of population (%)"
+"Manufacturing, value added (% of GDP)"
+"Government expenditure on education, total (% of GDP)"
+"School enrollment, primary (% gross)"
+"School enrollment, tertiary (% gross)"
+"Agriculture, forestry, and fishing, value added (current US$)"
+Population ages 15-64 (% of total population)
+"Compulsory education, duration (years)"
+Proportion of seats held by women in national parliaments (%)
+"Agriculture, forestry, and fishing, value added (% of GDP)"
+Urban population (% of total population)
+Population ages 0-14 (% of total population)

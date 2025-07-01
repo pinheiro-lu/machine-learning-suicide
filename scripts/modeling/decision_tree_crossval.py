@@ -39,11 +39,49 @@ def save_metrics(metrics, out_dir):
         json.dump(metrics, f, indent=2)
     print(f"[INFO] Saved metrics to {os.path.join(out_dir, 'metrics.json')}")
 
-def save_feature_importances(importances, code_to_name, out_dir):
-    importances_named = importances.rename(lambda code: code_to_name.get(code, code))
-    out_path = os.path.join(out_dir, 'feature_importances.csv')
-    importances_named.sort_values(ascending=False).to_csv(out_path, header=['importance'])
-    print(f"[INFO] Saved feature importances to {out_path}")
+def save_feature_importances_with_split_direction(model, X, code_to_name, out_dir):
+    importances = pd.Series(model.feature_importances_, index=X.columns)
+    tree = model.tree_
+    feature_names = X.columns
+    split_directions = {name: [] for name in feature_names}
+    # Traverse all nodes
+    for node in range(tree.node_count):
+        feature_idx = tree.feature[node]
+        if feature_idx >= 0:
+            left = tree.children_left[node]
+            right = tree.children_right[node]
+            left_value = tree.value[left][0][0]
+            right_value = tree.value[right][0][0]
+            # If going right (feature > threshold) increases prediction, direction is positive
+            if right_value > left_value:
+                split_directions[feature_names[feature_idx]].append('positive')
+            elif right_value < left_value:
+                split_directions[feature_names[feature_idx]].append('negative')
+            else:
+                split_directions[feature_names[feature_idx]].append('neutral')
+    # Aggregate direction for each feature
+    summary = []
+    for feat in feature_names:
+        dirs = split_directions[feat]
+        pos = dirs.count('positive')
+        neg = dirs.count('negative')
+        if pos > neg:
+            direction = 'mostly positive'
+        elif neg > pos:
+            direction = 'mostly negative'
+        elif pos == 0 and neg == 0:
+            direction = 'not used'
+        else:
+            direction = 'mixed'
+        summary.append({
+            'feature': code_to_name.get(feat, feat),
+            'importance': importances[feat],
+            'split_direction': direction
+        })
+    df = pd.DataFrame(summary).sort_values('importance', ascending=False)
+    out_path = os.path.join(out_dir, 'feature_importances_with_direction.csv')
+    df.to_csv(out_path, index=False)
+    print(f"[INFO] Saved feature importances with split direction to {out_path}")
 
 def save_tree_plot(model, X, code_to_name, out_dir):
     plt.figure(figsize=(30, 16))
@@ -76,8 +114,7 @@ def run_tree(X, y, k, random_state, code_to_name, out_dir):
     print(f"[INFO] {k}-fold CV: Mean MSE={metrics['mean_mse']:.4f} ± {metrics['std_mse']:.4f}, Mean R2={metrics['mean_r2']:.4f} ± {metrics['std_r2']:.4f}, N={metrics['n_samples']}")
     save_metrics(metrics, out_dir)
     model.fit(X, y)
-    importances = pd.Series(model.feature_importances_, index=X.columns)
-    save_feature_importances(importances, code_to_name, out_dir)
+    save_feature_importances_with_split_direction(model, X, code_to_name, out_dir)
     save_tree_plot(model, X, code_to_name, out_dir)
 
 def main():

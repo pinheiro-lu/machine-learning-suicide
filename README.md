@@ -1,6 +1,23 @@
 # Machine Learning Suicide Rate Modeling
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0%2B-orange)](https://scikit-learn.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 A comprehensive data science pipeline for predicting suicide rates using World Bank and WHO data, with a focus on interpretable machine learning models and gender-specific analysis.
+
+## 🎯 Quick Results Summary
+
+| Model | R² Score | MSE |
+|-------|----------|-----|
+| **Decision Tree** | 0.76 ± 0.02 | 12.4 ± 1.1 |
+| **Lasso Regression** | 0.24 ± 0.01 | 36.8 ± 1.1 |
+| **Ridge Regression** | 0.28 ± 0.03 | 34.2 ± 2.1 |
+
+**Top Predictors**: Female labor force participation (+), Population density (-), Industrial employment (+), Electricity access (-)
+
+![Model Comparison](comparacao_r2_modelos.png)
+*Sample comparison of model performance across cross-validation folds*
 
 ## 📊 Project Overview
 
@@ -21,6 +38,26 @@ This project develops and evaluates machine learning models to predict suicide r
 - **Coverage**: Multiple countries and years with extensive feature engineering
 
 ## 🔬 Methodology
+
+### Pipeline Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Data Sources  │    │   Preprocessing  │    │ Feature Eng.    │
+│                 │    │                  │    │                 │
+│ • World Bank    │───▶│ • Missing data   │───▶│ • Correlation   │
+│ • WHO Data      │    │ • Validation     │    │ • Variance      │
+│ • Country Meta  │    │ • Standardization│    │ • Selection     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                         │
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Evaluation    │    │   ML Models      │    │   Dataset       │
+│                 │    │                  │    │   Creation      │
+│ • Cross-val     │◀───│ • Decision Tree  │◀───│                 │
+│ • Metrics       │    │ • Lasso/Ridge    │    │ • Gender split  │
+│ • Comparison    │    │ • ElasticNet     │    │ • Interpretable │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
 
 ### Data Processing Pipeline
 
@@ -53,6 +90,16 @@ This project develops and evaluates machine learning models to predict suicide r
 - **Interpretability**: Feature coefficients and importance analysis
 
 ## 📈 Key Findings
+
+### Most Important Predictors (Interpretable Features)
+
+| Rank | Feature | Decision Tree Importance | Lasso Coefficient | Association |
+|------|---------|-------------------------|-------------------|-------------|
+| 1 | Female labor force participation | 0.296 | +3.05 | Positive ⬆️ |
+| 2 | Population density | 0.284 | -0.25 | Negative ⬇️ |
+| 3 | Industrial employment | 0.169 | +2.65 | Positive ⬆️ |
+| 4 | Electricity access | 0.137 | -2.24 | Negative ⬇️ |
+| 5 | Private health expenditure | 0.115 | -0.26 | Negative ⬇️ |
 
 ### Most Important Predictors (Interpretable Features)
 
@@ -119,10 +166,20 @@ python scripts/plot_comparacao_modelos.py
 
 ## 🔧 Requirements
 
-- Python 3.8+
-- pandas, numpy, scikit-learn
-- matplotlib, seaborn
-- requests (for API data fetching)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-1.21%2B-blue?logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-1.3%2B-green?logo=pandas&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.0%2B-orange?logo=scikit-learn&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.5%2B-red?logo=matplotlib&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-0.11%2B-purple)
+
+### Core Dependencies
+- **Python 3.8+**
+- **Data Processing**: pandas, numpy
+- **Machine Learning**: scikit-learn
+- **Visualization**: matplotlib, seaborn
+- **API Access**: requests
+- **Statistical Analysis**: scipy
 
 Install dependencies:
 ```bash
@@ -142,6 +199,21 @@ pip install -r requirements.txt
 - **Feature coefficients**: Sign and magnitude analysis for linear models
 - **Gender comparisons**: Differences in feature importance across populations
 
+### Generated Files
+```
+results/
+├── decision_tree/
+│   ├── metrics.json                    # Performance metrics
+│   ├── feature_importances_with_direction.csv  # Novel split analysis
+│   ├── tree_plot.png                  # Decision tree visualization
+│   └── fold_metrics.csv               # Per-fold performance
+├── lasso/
+│   ├── metrics.json
+│   ├── nonzero_coefficients.csv       # Selected features
+│   └── fold_metrics.csv
+└── comparacao_r2_modelos.png          # Model comparison plots
+```
+
 ## 🎯 Research Contributions
 
 1. **Novel interpretability approach**: Split direction analysis for decision trees
@@ -155,10 +227,6 @@ pip install -r requirements.txt
 - Extension to other health outcomes
 - Deep learning approaches for complex pattern recognition
 - Real-time prediction system development
-
-## 📝 License
-
-This project is developed for academic research purposes. Please cite appropriately if using components of this work.
 
 ## 👥 Author
 
